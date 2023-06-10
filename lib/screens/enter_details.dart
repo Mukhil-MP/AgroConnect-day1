@@ -1,12 +1,10 @@
-//import 'package:agroconnect_day1/widget/text_field.dart';
 import 'package:flutter/material.dart';
 
-class Start extends StatelessWidget {
-  const Start({super.key});
+class EnterDetails extends StatelessWidget {
+  const EnterDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Stack(
         children: [
@@ -21,8 +19,10 @@ class Start extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 21, right: 21),
-            height: MediaQuery.of(context).size.height,
+            // padding: const EdgeInsets.only(left: 21, right: 21),
+            margin: const EdgeInsets.only(top: 54, left: 17),
+            height: 45,
+            width: 170,
             child: Image.asset("assets/images/agroconnect_text.png"),
           ),
           Container(
@@ -30,7 +30,25 @@ class Start extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/images/pashu.png'),
           ),
-          
+          Container(
+            height: 400,
+            width: 325,
+
+            margin: const EdgeInsets.only(left: 33, top: 135),
+            child: const Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child:Text("Enter your details",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+                )),
+              ],
+            ),
+          )
         ],
       ),
     );
