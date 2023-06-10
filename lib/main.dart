@@ -12,6 +12,10 @@
 // import 'package:agroconnect_day1/screens/id_verification.dart';
 //import 'package:agroconnect_day1/screens/user_selection.dart';
 import 'package:agroconnect_day1/screens/id_verification.dart';
+//import 'package:agroconnect_day1/screens/user_selection.dart';
+//import 'package:agroconnect_day1/screens/create_password.dart';
+import 'package:agroconnect_day1/screens/bank.dart';
+import 'package:agroconnect_day1/screens/otp.dart';
 import 'package:flutter/material.dart';
 // import 'package:agroconnect_day1/screens/login_sigin.dart';
 
@@ -29,6 +33,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: IdVerification(),
+
       ),
     );
   }
