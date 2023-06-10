@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
 
-class EnterDetails extends StatelessWidget {
-  const EnterDetails({super.key});
+class EditDetails extends StatelessWidget {
+  const EditDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +54,10 @@ class EnterDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // textfield
+             
+        
               Container(
                 margin: const EdgeInsets.only(top: 200),
-                child: CustomTextField(
-                  labeltext: "Name",
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 17),
                 child: CustomTextField(
                   labeltext: "Phone No",
                 ),
@@ -84,7 +79,7 @@ class EnterDetails extends StatelessWidget {
               // button
 
               Container(
-                  margin: const EdgeInsets.only(top: 350 ,left: 150),
+                  margin: const EdgeInsets.only(top: 500 ,left: 150),
                   child: const CustomButton(text: "Submit")),
             ],
           ),
