@@ -1,7 +1,10 @@
 //import 'package:agroconnect_day1/screens/start.dart';
 // import 'package:agroconnect_day1/screens/enter_details.dart';
 //import 'package:agroconnect_day1/screens/login_sigin.dart';
-import 'package:agroconnect_day1/screens/user_selection.dart';
+//import 'package:agroconnect_day1/screens/user_selection.dart';
+//import 'package:agroconnect_day1/screens/create_password.dart';
+import 'package:agroconnect_day1/screens/bank.dart';
+import 'package:agroconnect_day1/screens/otp.dart';
 import 'package:flutter/material.dart';
 // import 'package:agroconnect_day1/screens/login_sigin.dart';
 
@@ -18,7 +21,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: UserSelection(),
+        body: Bank(),
       ),
     );
   }

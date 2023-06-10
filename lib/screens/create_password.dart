@@ -1,11 +1,10 @@
-//import 'package:agroconnect_day1/widget/button.dart';
-import 'package:agroconnect_day1/widget/button2.dart';
+import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 
-//import '../widget/text_field.dart';
+import '../widget/text_field.dart';
 
-class UserSelection extends StatelessWidget {
-  const UserSelection({super.key});
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +38,20 @@ class UserSelection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // textfield
               Container(
-                margin: const EdgeInsets.only(top: 150, left: 50),
-                child: Text(
-                  "Select The User",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+                  margin: const EdgeInsets.only(top: 270),
+                  child: Text('db data')),
+              Container(
+                margin: const EdgeInsets.only(top: 65),
+                child: CustomTextField(
+                  labeltext: "Create Password",
                 ),
               ),
+
               Container(
-                  margin: const EdgeInsets.only(top: 93, left: 50),
-                  child: customButton2(text: "Farmer")),
-              Container(
-                  margin: const EdgeInsets.only(top: 25, left: 50),
-                  child: customButton2(text: "Ward Member")),
-              Container(
-                  margin: const EdgeInsets.only(top: 25, left: 50),
-                  child: customButton2(text: "Agricultural Officer"))
+                  margin: const EdgeInsets.only(top: 50),
+                  child: CustomButton(text: "Submit")),
             ],
           ),
         ],
