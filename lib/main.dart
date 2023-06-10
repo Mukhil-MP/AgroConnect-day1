@@ -1,5 +1,8 @@
-import 'package:agroconnect_day1/screens/start.dart';
+//import 'package:agroconnect_day1/screens/start.dart';
+// import 'package:agroconnect_day1/screens/enter_details.dart';
+import 'package:agroconnect_day1/screens/login_sigin.dart';
 import 'package:flutter/material.dart';
+// import 'package:agroconnect_day1/screens/login_sigin.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,8 +14,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Start(),
+        resizeToAvoidBottomInset: false,
+        body: LoginSign(),
       ),
     );
   }
