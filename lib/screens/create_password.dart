@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
 
-class EnterDetails extends StatelessWidget {
-  const EnterDetails({super.key});
+class CreatePassword extends StatelessWidget {
+  const CreatePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,22 +34,6 @@ class EnterDetails extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/images/pashu.png'),
           ),
-        const Column(
-          children: const [SizedBox(
-          height: 130,
-          ),
-          Center(
-            child:Text(
-              "Enter Your Details",
-              style:TextStyle(fontSize: 30,
-              fontWeight: FontWeight.bold)
-            )
-          )
-          ,],
-         ) ,
-          
-          
-          
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,13 +42,13 @@ class EnterDetails extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 200),
                 child: CustomTextField(
-                  labeltext: "Name",
+                  labeltext: "Application ID",
                 ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 17),
                 child: CustomTextField(
-                  labeltext: "Phone No",
+                  labeltext: "Create Password",
                 ),
               ),
               
@@ -84,8 +68,8 @@ class EnterDetails extends StatelessWidget {
               // button
 
               Container(
-                  margin: const EdgeInsets.only(top: 350 ,left: 150),
-                  child: const CustomButton(text: "Submit")),
+                  margin: const EdgeInsets.only(top: 30),
+                  child: const CustomButton(text: "Log In")),
             ],
           ),
         ],

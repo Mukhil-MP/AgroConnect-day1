@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
 
-class EnterDetails extends StatelessWidget {
-  const EnterDetails({super.key});
+class EnterDet extends StatelessWidget {
+  const EnterDet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +67,8 @@ class EnterDetails extends StatelessWidget {
                   labeltext: "Phone No",
                 ),
               ),
+
+              
               
 
               // Container(

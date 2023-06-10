@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
 
-class EnterDetails extends StatelessWidget {
-  const EnterDetails({super.key});
+class IdVerification extends StatelessWidget {
+  const IdVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,39 +34,24 @@ class EnterDetails extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/images/pashu.png'),
           ),
-        const Column(
-          children: const [SizedBox(
-          height: 130,
-          ),
-          Center(
-            child:Text(
-              "Enter Your Details",
-              style:TextStyle(fontSize: 30,
-              fontWeight: FontWeight.bold)
-            )
-          )
-          ,],
-         ) ,
-          
-          
-          
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // textfield
               Container(
-                margin: const EdgeInsets.only(top: 200),
-                child: CustomTextField(
-                  labeltext: "Name",
+                
+                margin: const EdgeInsets.only(top: 300),
+                child: const CustomTextField(
+                  
+                  labeltext: "                Verification",
+                  
+                  
+                  
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 17),
-                child: CustomTextField(
-                  labeltext: "Phone No",
-                ),
-              ),
+              
+             
               
 
               // Container(
@@ -84,8 +69,17 @@ class EnterDetails extends StatelessWidget {
               // button
 
               Container(
-                  margin: const EdgeInsets.only(top: 350 ,left: 150),
-                  child: const CustomButton(text: "Submit")),
+                  margin: const EdgeInsets.only(top: 20),
+                  child: const CustomButton(text: "Select a file")),
+
+              Container(
+            // padding: const EdgeInsets.only(left: 21, right: 21),
+            margin: const EdgeInsets.only(top: 10, left: 17),
+            height: 80,
+            width: 1100,
+            child: Image.asset("assets/images/(Upload your agricultural identity card in pdf format).png"),
+          ),
+              
             ],
           ),
         ],
