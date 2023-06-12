@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
+  snippet_coder_utils: ^1.0.14
   url_launcher: ^6.1.11
 
 dev_dependencies:
@@ -23,4 +24,4 @@ flutter:
   - assets/images/pashu.png
   - assets/images/agroconnect_text.png
   - assets/images/(Upload your agricultural identity card in pdf format).png
-  - assets/images/
+  - assets/images/Add the following (Optional)_ Subject, address, phone number..png
