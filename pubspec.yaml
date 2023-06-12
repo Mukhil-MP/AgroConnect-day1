@@ -11,8 +11,7 @@ dependencies:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
   snippet_coder_utils: ^1.0.14
-
-  
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:

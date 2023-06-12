@@ -23,6 +23,12 @@ import 'package:agroconnect_day1/screens/enter_details.dart';
 //import 'package:agroconnect_day1/screens/change_password.dart';
 //import 'package:agroconnect_day1/screens/create_password.dart';
 //import 'package:agroconnect_day1/screens/enter_details.dart';
+=======
+//import 'package:agroconnect_day1/screens/farmer_menu.dart';
+//import 'package:agroconnect_day1/screens/laws.dart';
+import 'package:agroconnect_day1/screens/home_page.dart';
+// import 'package:agroconnect_day1/screens/wa_menu.dart';
+//import 'package:agroconnect_day1/screens/otp.dart';
 import 'package:flutter/material.dart';
 // import 'package:agroconnect_day1/screens/login_sigin.dart';
 
@@ -39,8 +45,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: EnterDetails(),
-
+        body: HomePage(),
       ),
     );
   }
