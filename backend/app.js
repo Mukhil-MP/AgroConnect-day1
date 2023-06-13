@@ -1,0 +1,18 @@
+const express = require('express');
+const body_parser = require('body-parser');
+const bcrypt = require('bcrypt');
+const farmerRouter = require('./routers/farmerRouter');
+const officerRouter = require('./routers/officerRouter');
+const memberRouter = require('./routers/memberRouter');
+const scrapeRouter = require('./routers/scrapeRouter');
+const otpRouter = require('./routers/otpRouter');
+const weatherRouter = require('./routers/weatherRouter');
+const app = express();
+app.use(body_parser.json());
+app.use('/',farmerRouter);
+app.use('/',officerRouter);
+app.use('/',memberRouter);
+app.use('/',scrapeRouter);
+app.use('/',otpRouter);
+app.use('/',weatherRouter);
+module.exports=app;
