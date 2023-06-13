@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
 
-class IdVerification extends StatelessWidget {
-  const IdVerification({super.key});
+class ChangePassword extends StatelessWidget {
+  const ChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,48 +39,23 @@ class IdVerification extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // textfield
+            
               Container(
-                
-                margin: const EdgeInsets.only(top: 250),
-                child: const CustomTextField(
-                  
-                  labeltext: "                Verification",
-                  
-                  
-                  
+                margin: const EdgeInsets.only(top: 205),
+                child: CustomTextField(
+                  labeltext: "Enter new Password",
                 ),
               ),
               
-             
-              
-
-              // Container(
-              //   margin: const EdgeInsets.only(top: 227),
-              //   padding:  const EdgeInsets.only(left: 48, right: 48),
-              //   child: const TextField(
-              //     decoration: InputDecoration(
-              //       labelText: "Enter Your ID",
-              //       labelStyle: TextStyle(fontSize: 24),
-              //       floatingLabelBehavior: FloatingLabelBehavior.never,
-              //     ),
-              //   ),
-              // ),
-
-              // button
-                Container(
-            // padding: const EdgeInsets.only(left: 21, right: 21),
-            margin: const EdgeInsets.only(top: 10, left: 17),
-            height: 80,
-            width: 1100,
-            child: Image.asset("assets/images/(Upload your agricultural identity card in pdf format).png"),
-          ),
-             
-
               Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  child: const CustomButton(text: "Select a file")),
-
-             
+                margin: const EdgeInsets.only(top: 35),
+                child: CustomTextField(
+                  labeltext: "Confirm new Password",
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  child: CustomButton(text: "Submit")),
             ],
           ),
         ],
