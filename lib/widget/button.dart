@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
+  final VoidCallback func;
 
   const CustomButton({
     Key? key,
-    required this.text,
+    required this.text, required this.func,
   }) : super(key: key);
 
   @override
@@ -17,9 +18,9 @@ class CustomButton extends StatelessWidget {
       decoration:BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(54),
-          boxShadow: [BoxShadow(blurRadius: 10)]),
+          boxShadow: const [BoxShadow(blurRadius: 10)]),
       child: TextButton(
-          onPressed: () => {},
+          onPressed: func,
           child:Text(
             text,
             style: const TextStyle(fontSize: 24, color: Colors.black),

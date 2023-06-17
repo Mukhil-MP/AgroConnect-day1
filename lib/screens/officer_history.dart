@@ -1,13 +1,16 @@
 //import 'package:agroconnect_day1/widget/button.dart';
 //import 'package:agroconnect_day1/widget/button5.dart';
-import 'package:agroconnect_day1/widget/button6.dart';
-import 'package:agroconnect_day1/widget/button7.dart';
+//import 'package:agroconnect_day1/widget/button6.dart';
+//import 'package:agroconnect_day1/widget/button7.dart';
+import 'package:agroconnect_day1/widget/button8.dart';
+import 'package:agroconnect_day1/widget/button9.dart';
 import 'package:flutter/material.dart';
 
 //import '../widget/text_field.dart';
 
-class ComplaintHistory extends StatelessWidget {
-  const ComplaintHistory({super.key});
+class OfficerHistory extends StatelessWidget {
+  const OfficerHistory
+({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +46,25 @@ class ComplaintHistory extends StatelessWidget {
                    Container(
                     
                       margin: const EdgeInsets.only(top: 30 ),
-                      child: const CustomButton7(text: "Register")
+                      child: const CustomButton9(text: "Complaints recieved")
                       
                       
                       ),
                       Container(
                 
                   margin: const EdgeInsets.only(top: 30 ),
-                  child: const CustomButton6(text: "History")
+                  child: const CustomButton9(text: "Complaints not responded")
                   
                   
                   ),
+
+                   Container(
+                    
+                      margin: const EdgeInsets.only(top: 30 ),
+                      child: const CustomButton8(text: "History")
+                      
+                      
+                      ),
                  ],
                ),
 

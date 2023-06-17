@@ -1,4 +1,5 @@
 //import 'package:agroconnect_day1/widget/text_field.dart';
+import 'package:agroconnect_day1/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class Start extends StatelessWidget {
@@ -6,7 +7,13 @@ class Start extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    
+    Future.delayed(Duration(seconds: 2)).then((_) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    });
     return Scaffold(
       body: Stack(
         children: [

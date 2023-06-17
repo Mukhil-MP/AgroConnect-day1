@@ -78,7 +78,7 @@ class IdVerification extends StatelessWidget {
 
               Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: const CustomButton(text: "Select a file")),
+                  child: CustomButton(text: "Select a file",func: (){},)),
 
              
             ],

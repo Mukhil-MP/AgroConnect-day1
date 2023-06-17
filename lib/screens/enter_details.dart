@@ -167,7 +167,7 @@ List<dynamic> ward=[];
 
               Container(
                   margin: const EdgeInsets.only(top: 100 ,left: 150),
-                  child: const CustomButton(text: "Submit")),
+                  child: CustomButton(text: "Submit",func: (){},)),
             ],
           ),
         ],

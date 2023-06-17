@@ -14,7 +14,7 @@ class customButton2 extends StatelessWidget {
       height: 60,
       width: 300,
       decoration: BoxDecoration(
-          color: Color(0xff05FF00),
+          color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.circular(54),
           boxShadow: [BoxShadow(blurRadius: 10)]),
       child: TextButton(

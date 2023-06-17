@@ -1,5 +1,6 @@
 //import 'package:agroconnect_day1/widget/button.dart';
 //import 'package:agroconnect_day1/widget/button2.dart';
+import 'package:agroconnect_day1/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -50,21 +51,21 @@ class Otp extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 35),
-                child: Text(
+                child: const Text(
                   " OTP Verification",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900),
                 ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 20),
-                child: Text(
+                child: const Text(
                   "we will send you a one time Password on",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 5),
-                child: Text(
+                child: const Text(
                   "       your mobile number       ",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
@@ -118,7 +119,9 @@ class Otp extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: CustomButton(text: "Verify"))
+                  child: CustomButton(text: "Verify",func: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                  }))
             ],
           ),
         ],

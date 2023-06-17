@@ -55,7 +55,7 @@ class ChangePassword extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 50),
-                  child: CustomButton(text: "Submit")),
+                  child: CustomButton(text: "Submit",func: (){},)),
             ],
           ),
         ],
