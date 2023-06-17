@@ -7,7 +7,7 @@ const { Schema }=mongoose;
 const complaintSchema = new Schema({
     complaintText: {
         type: String,
-        required: [true, "name can't be empty"]
+        required: [true, "complaint can't be empty"]
     }
 },{timestamps:true});
 
