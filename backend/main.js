@@ -6,6 +6,7 @@ const officerModel = require('./model/officerModel');
 const memberModel = require('./model/memberModel');
 const scrapeModel = require('./model/scrapeModel');
 const otpModel = require('./model/otpModel');
+const complaintModel = require('./model/complaintModel');
 
 const port = 3000;
 /* 

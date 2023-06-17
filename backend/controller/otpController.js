@@ -7,7 +7,7 @@ async function generateAndSendOTP(phone) {
   const otpCode = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit OTP 
   // Save OTP to the database
   const otp = new OTPModel({
-    phone:farmerModel.findOne({phone}),
+    phone:phone,
     code: otpCode,
     createdAt: new Date(),
   });

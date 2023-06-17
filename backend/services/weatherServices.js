@@ -1,14 +1,41 @@
-const weatherController = require('../controller/weatherController');
+const axios = require('axios');
+const weatherModel = require('../model/weatherModel');
+require('dotenv').config();
 
-// Example usage
-const latitude = 9.549490;
-const longitude = 76.604910;
-const apiKey = process.env.OPENWEATHERMAP_API_KEY;
+async function saveWeatherData(latitude, longitude, apiKey) {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
-weatherController.saveWeatherData(latitude, longitude, apiKey)
-  .then(() => {
-    console.log('Weather data saved successfully');
-  })
-  .catch((error) => {
-    console.error('Error saving weather data:', error);
-  });
+  try {
+    const response = await axios.get(url);
+
+    if (response && response.data) {
+      const weatherData = response.data;
+
+      // Extract the nested "sys" field properties
+      const { type, id, country, sunrise, sunset } = weatherData.sys;
+
+      // Create a new Weather object using the weather data
+      const weather = new weatherModel({
+        ...weatherData,
+        sys: {
+          type,
+          id,
+          country,
+          sunrise,
+          sunset,
+        },
+      });
+
+      await weather.save();
+
+      console.log('Weather data saved successfully');
+    } else {
+      throw new Error('Failed to retrieve weather data');
+    }
+  } catch (error) {
+    console.error('Error saving weather data:', error.message);
+    throw new Error('Failed to save weather data');
+  }
+}
+
+module.exports = { saveWeatherData };
