@@ -1,110 +1,110 @@
-//import 'package:agroconnect_day1/widget/button.dart';
-import 'package:agroconnect_day1/widget/button5.dart';
-import 'package:agroconnect_day1/widget/button6.dart';
-import 'package:agroconnect_day1/widget/button7.dart';
-import 'package:flutter/material.dart';
+// //import 'package:agroconnect_day1/widget/button.dart';
+// import 'package:agroconnect_day1/widget/button5.dart';
+// import 'package:agroconnect_day1/widget/button6.dart';
+// import 'package:agroconnect_day1/widget/button7.dart';
+// import 'package:flutter/material.dart';
 
-//import '../widget/text_field.dart';
+// //import '../widget/text_field.dart';
 
-class ComplaintHistory extends StatelessWidget {
-  const ComplaintHistory({super.key});
+// class ComplaintHistory extends StatelessWidget {
+//   const ComplaintHistory({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color.fromARGB(255, 255, 255, 255)]),
-            ),
-          ),
-          Container(
-            // padding: const EdgeInsets.only(left: 21, right: 21),
-            margin: const EdgeInsets.only(top: 54, left: 17),
-            height: 45,
-            width: 170,
-            child: Image.asset("assets/images/agroconnect_text.png"),
-          ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       resizeToAvoidBottomInset: false,
+//       body: Stack(
+//         children: [
+//           Container(
+//             height: MediaQuery.of(context).size.height,
+//             width: MediaQuery.of(context).size.width,
+//             decoration: const BoxDecoration(
+//               gradient: LinearGradient(
+//                   begin: Alignment.topCenter,
+//                   end: Alignment.bottomCenter,
+//                   colors: [Color.fromARGB(255, 255, 255, 255)]),
+//             ),
+//           ),
+//           Container(
+//             // padding: const EdgeInsets.only(left: 21, right: 21),
+//             margin: const EdgeInsets.only(top: 54, left: 17),
+//             height: 45,
+//             width: 170,
+//             child: Image.asset("assets/images/agroconnect_text.png"),
+//           ),
          
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+//           Column(
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
 
-               Row(
-                 children: [
-                   Container(
+//                Row(
+//                  children: [
+//                    Container(
                     
-                      margin: const EdgeInsets.only(top: 30 ),
-                      child: const CustomButton7(text: "Register")
+//                       margin: const EdgeInsets.only(top: 30 ),
+//                       child: const CustomButton7(text: "Register")
                       
                       
-                      ),
-                      Container(
+//                       ),
+//                       Container(
                 
-                  margin: const EdgeInsets.only(top: 30 ),
-                  child: const CustomButton6(text: "History")
+//                   margin: const EdgeInsets.only(top: 30 ),
+//                   child: const CustomButton6(text: "History")
                   
                   
-                  ),
-                 ],
-               ),
+//                   ),
+//                  ],
+//                ),
 
                   
-            Container(
-                margin: const EdgeInsets.only(right:150,top:100),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Compliant 1",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
+//             Container(
+//                 margin: const EdgeInsets.only(right:150,top:100),
+//                 child: TextButton(
+//                   onPressed: () {},
+//                   child: const Text(
+//                     "Compliant 1",
+//                     style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
+//                   ),
+//                 ),
+//               ),
               
-               Container(
-                margin: const EdgeInsets.only(right:150,top:10),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Compliant 2",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
+//                Container(
+//                 margin: const EdgeInsets.only(right:150,top:10),
+//                 child: TextButton(
+//                   onPressed: () {},
+//                   child: const Text(
+//                     "Compliant 2",
+//                     style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
+//                   ),
+//                 ),
+//               ),
 
-               Container(
-                margin: const EdgeInsets.only(right:150,top:10),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Compliant 3",
-                    style: TextStyle(fontSize: 20, color:  Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
+//                Container(
+//                 margin: const EdgeInsets.only(right:150,top:10),
+//                 child: TextButton(
+//                   onPressed: () {},
+//                   child: const Text(
+//                     "Compliant 3",
+//                     style: TextStyle(fontSize: 20, color:  Color.fromARGB(255, 0, 0, 0)),
+//                   ),
+//                 ),
+//               ),
               
              
-              Container(
+//               Container(
                 
-                  margin: const EdgeInsets.only(top: 300, left:150),
-                  child: const CustomButton5(text: "Submit")
+//                   margin: const EdgeInsets.only(top: 300, left:150),
+//                   child: const CustomButton5(text: "Submit")
                   
                   
-                  ),
+//                   ),
                
 
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

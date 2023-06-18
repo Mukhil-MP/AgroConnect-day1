@@ -1,3 +1,5 @@
+import 'package:agroconnect_day1/screens/home_page.dart';
+import 'package:agroconnect_day1/screens/user_selection.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +80,12 @@ class LoginSign extends StatelessWidget {
 
               Container(
                   margin: const EdgeInsets.only(top: 30),
-                  child: CustomButton(text: "Log In")),
+                  child: CustomButton(text: "Log In",func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),)
+                    )
+                  },)),
               Container(
                 margin: const EdgeInsets.only(top: 14),
                 child: Text(
@@ -88,7 +95,13 @@ class LoginSign extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 14),
-                  child: CustomButton(text: "Sign Up"))
+                  child: CustomButton(text: "Sign Up",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const UserSelection(),)
+                    )
+                  },))
             ],
           ),
         ],

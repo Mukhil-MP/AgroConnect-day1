@@ -1,4 +1,7 @@
 //import 'package:agroconnect_day1/widget/button.dart';
+import 'package:agroconnect_day1/screens/change_password.dart';
+import 'package:agroconnect_day1/screens/edit_details.dart';
+import 'package:agroconnect_day1/screens/login_sigin.dart';
 import 'package:agroconnect_day1/widget/button4.dart';
 import 'package:flutter/material.dart';
 
@@ -54,36 +57,72 @@ class WardOffiMenu extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 60),
                 child: CustomButton4(
-                    text: "Edit Personal Details",
+                    text: "Edit Personal Details",func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditDetails(),)
+                    )
+                  },
                     imagelock: "assets/images/profile.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Application Form",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  },
                     imagelock: "assets/images/form.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Notify Farmers",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  },
                     imagelock: "assets/images/notify.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Change Password",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChangePassword(),)
+                    )
+                  },
                     imagelock: "assets/images/password.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
-                    text: "About/FAQ", imagelock: "assets/images/faq.png"),
+                    text: "About/FAQ",
+                    
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  }, imagelock: "assets/images/faq.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
-                    text: "Logout", imagelock: "assets/images/logout.png"),
+                    text: "Logout",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginSign(),)
+                    )
+                  }, imagelock: "assets/images/logout.png"),
               )
             ],
           ),

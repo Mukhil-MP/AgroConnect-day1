@@ -1,3 +1,4 @@
+import 'package:agroconnect_day1/screens/id_verification.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
@@ -12,35 +13,44 @@ class EnterDetails extends StatefulWidget {
 }
 
 class _EnterDetailsState extends State<EnterDetails> {
-List district = [{"id":1,"name":"Kasargod"},
-                {"id":2,"name":"Kannoor"},
-                {"id":3,"name":"Thrissur"},];
-List talukMaster =   [{"id":1,"name":"Kodungaloor","parentdistrictID":3},
-                {"id":2,"name":"taluk 2" ,"parentdistrictID":3},
-                {"id":3,"name":"taluk 3","parentdistrictID":3},];
-List<dynamic> taluk=[];
+  List district = [
+    {"id": 1, "name": "Kasargod"},
+    {"id": 2, "name": "Kannoor"},
+    {"id": 3, "name": "Thrissur"},
+  ];
+  List talukMaster = [
+    {"id": 1, "name": "Kodungaloor", "parentdistrictID": 3},
+    {"id": 2, "name": "taluk 2", "parentdistrictID": 3},
+    {"id": 3, "name": "taluk 3", "parentdistrictID": 3},
+  ];
+  List<dynamic> taluk = [];
 
-List blockMaster =   [{"id":1,"name":"Mala","parenttalukID":1},
-                {"id":2,"name":"block 2","parenttalukID":1},
-                {"id":3,"name":"block 3","parenttalukID":1},];
-List<dynamic> block=[];
-List krishiBhavanMaster =   [{"id":1,"name":"KB Kodungaloor Municipality","parentblockID":1},
-                {"id":2,"name":"KB 2" ,"parentblockID":1},
-                {"id":3,"name":"KB 3","parentblockID":1},];
-List<dynamic> krishiBhavan=[];
-List wardMaster =    [{"id":1,"name":"1", "parentkbID":1},
-                {"id":2,"name":"2" ,"parentkbID":1},
-                {"id":3,"name":"3", "parentkbID":1},
-                {"id":4,"name":"4", "parentkbID":1},
-                {"id":5,"name":"5", "parentkbID":1},
-                {"id":6,"name":"6", "parentkbID":1},];
-List<dynamic> ward=[];
-              String? districtID;
-              String? talukID;
-              String? blockID;
-              String? kbID;
-              String? wardID;
-
+  List blockMaster = [
+    {"id": 1, "name": "Mala", "parentdistrictID": 3},
+    {"id": 2, "name": "block 2", "parentdistrictID": 3},
+    {"id": 3, "name": "block 3", "parentdistrictID": 3},
+  ];
+  List<dynamic> block = [];
+  List krishiBhavanMaster = [
+    {"id": 1, "name": "KB Kodungaloor Municipality", "parentblockID": 1},
+    {"id": 2, "name": "KB 2", "parentblockID": 1},
+    {"id": 3, "name": "KB 3", "parentblockID": 1},
+  ];
+  List<dynamic> krishiBhavan = [];
+  List wardMaster = [
+    {"id": 1, "name": "1", "parentkbID": 1},
+    {"id": 2, "name": "2", "parentkbID": 1},
+    {"id": 3, "name": "3", "parentkbID": 1},
+    {"id": 4, "name": "4", "parentkbID": 1},
+    {"id": 5, "name": "5", "parentkbID": 1},
+    {"id": 6, "name": "6", "parentkbID": 1},
+  ];
+  List<dynamic> ward = [];
+  String? districtID;
+  String? talukID;
+  String? blockID;
+  String? kbID;
+  String? wardID;
 
   @override
   Widget build(BuildContext context) {
@@ -70,22 +80,17 @@ List<dynamic> ward=[];
             height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/images/pashu.png'),
           ),
-        const Column(
-          children:  [SizedBox(
-          height: 130,
+          const Column(
+            children: [
+              SizedBox(
+                height: 130,
+              ),
+              Center(
+                  child: Text("Enter Your Details",
+                      style: TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold))),
+            ],
           ),
-          Center(
-            child:Text(
-              "Enter Your Details",
-              style:TextStyle(fontSize: 30,
-              fontWeight: FontWeight.bold)
-            )
-          )
-          ,],
-         ) ,
-          
-          
-          
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -103,53 +108,90 @@ List<dynamic> ward=[];
                   labeltext: "Phone No",
                 ),
               ),
-              FormHelper.dropDownWidget(context, "District", this.districtID, this.district, (onChanged){districtID = onChanged;
-              print("Selected district: $districtID");
+              FormHelper.dropDownWidget(
+                  context, "District", this.districtID, this.district,
+                  (onChanged) {
+                setState(() {
+                  this.districtID = onChanged;
+                });
 
-              
-                this.taluk = this.talukMaster.where((stateItem)=>stateItem["parentdistrictID"].toString() == onChanged.toString(),).toList();
-                this.talukID= null;
-              
-              
-              }, (onValidate){
-                if (onValidate==null) {
+                print("Selected district: $districtID");
+
+                this.taluk = this
+                    .talukMaster
+                    .where(
+                      (stateItem) =>
+                          stateItem["parentdistrictID"].toString() ==
+                          districtID.toString(),
+                    )
+                    .toList();
+                this.talukID = null;
+              }, (onValidate) {
+                if (onValidate == null) {
                   return 'Please select district';
-                  
-                } return null;
+                }
+                return null;
               }),
-              FormHelper.dropDownWidget(context, "Taluk", talukID, taluk, (onChanged){talukID = onChanged;
-              print("Selected taluk: $talukID");
-              block = blockMaster.where((stateItem)=>stateItem["parenttalukID"].toString()==onChanged.toString()).toList();
-              }, (onValidate){
-                if (onValidate==null) {
-                  return 'Please select taluk';
-                  
-                } return null;
+              FormHelper.dropDownWidget(context, "Taluk", talukID, taluk,
+                  (onChanged) {
+                talukID = onChanged;
+                print("Selected taluk: $talukID");
+
+                this.block = this
+                    .blockMaster
+                    .where(
+                      (stateItem) =>
+                          stateItem["parentdistrictID"].toString() ==
+                          districtID.toString(),
+                    )
+                    .toList();
+                this.blockID = null;
+              }, (onValidate) {
+                if (onValidate == null) {
+                  return 'Please select district';
+                }
+                return null;
               }),
-              FormHelper.dropDownWidget(context, "Block", blockID, block, (onChanged){blockID = onChanged;
-              print("Selected block: $blockID");
-              krishiBhavan = krishiBhavanMaster.where((stateItem)=>stateItem["parentblockID"].toString()==onChanged.toString()).toList();}, (onValidate){
-                if (onValidate==null) {
+              FormHelper.dropDownWidget(context, "Block", blockID, block,
+                  (onChanged) {
+                blockID = onChanged;
+
+                print("Selected block: $blockID");
+                krishiBhavan = krishiBhavanMaster
+                    .where((stateItem) =>
+                        stateItem["parentdistrictID"].toString() == districtID)
+                    .toList();
+              }, (onValidate) {
+                if (onValidate == null) {
                   return 'Please select block';
-                  
-                } return null;
+                }
+                return null;
               }),
-              FormHelper.dropDownWidget(context, "Krishi Bhavan", kbID, krishiBhavan, (onChanged){kbID = onChanged;
-              print("Selected KB: $kbID");
-              ward = wardMaster.where((stateItem)=>stateItem["parentkbID"].toString()==onChanged.toString()).toList();}, (onValidate){
-                if (onValidate==null) {
+              FormHelper.dropDownWidget(
+                  context, "Krishi Bhavan", kbID, krishiBhavan, (onChanged) {
+                kbID = onChanged;
+                print("Selected KB: $kbID");
+                ward = wardMaster
+                    .where((stateItem) =>
+                        stateItem["parentkbID"].toString() ==
+                        onChanged.toString())
+                    .toList();
+              }, (onValidate) {
+                if (onValidate == null) {
                   return 'Please select kb';
-                  
-                } return null;
+                }
+                return null;
               }),
-              FormHelper.dropDownWidget(context, "Ward", wardID, ward, (onChanged){wardID = onChanged;
-              print("Selected district: $wardID");}, (onValidate){
-                if (onValidate==null) {
+              FormHelper.dropDownWidget(context, "Ward", wardID, ward,
+                  (onChanged) {
+                wardID = onChanged;
+                print("Selected district: $wardID");
+              }, (onValidate) {
+                if (onValidate == null) {
                   return 'Please select ward';
-                  
-                } return null;
+                }
+                return null;
               }),
-              
 
               // Container(
               //   margin: const EdgeInsets.only(top: 227),
@@ -166,8 +208,16 @@ List<dynamic> ward=[];
               // button
 
               Container(
-                  margin: const EdgeInsets.only(top: 100 ,left: 150),
-                  child: const CustomButton(text: "Submit")),
+                  margin: const EdgeInsets.only(top: 100, left: 150),
+                  child: CustomButton(
+                      text: "Submit",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const IdVerification(),
+                                ))
+                          })),
             ],
           ),
         ],

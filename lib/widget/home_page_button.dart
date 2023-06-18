@@ -4,9 +4,11 @@ class HomePageButtton extends StatelessWidget {
   const HomePageButtton({
     Key? key,
     required this.menuimage,
+    required this.func,
   }) : super(key: key);
 
   final String menuimage;
+  final VoidCallback func;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class HomePageButtton extends StatelessWidget {
         border: Border.all(width: 1, color: Colors.grey),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: func,
         child: Image.asset(menuimage),
         style: ElevatedButton.styleFrom(
           elevation: 0.0,
