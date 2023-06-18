@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomButton5 extends StatelessWidget {
   final String text;
+  final VoidCallback func;
 
   const CustomButton5({
     Key? key,
     required this.text,
+    required this.func,
   }) : super(key: key);
 
   @override
@@ -13,14 +15,13 @@ class CustomButton5 extends StatelessWidget {
     return Container(
       height: 60,
       width: 200,
-
-      decoration:BoxDecoration(
+      decoration: BoxDecoration(
           color: Color(0xff05FF00),
           borderRadius: BorderRadius.circular(54),
           boxShadow: [BoxShadow(blurRadius: 10)]),
       child: TextButton(
-          onPressed: () => {},
-          child:Text(
+          onPressed: func,
+          child: Text(
             text,
             style: const TextStyle(fontSize: 24, color: Colors.black),
           )),

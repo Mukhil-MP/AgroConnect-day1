@@ -1,5 +1,9 @@
+import 'package:agroconnect_day1/screens/bank.dart';
+import 'package:agroconnect_day1/screens/laws.dart';
+import 'package:agroconnect_day1/screens/wa_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:agroconnect_day1/widget/home_page_button.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,16 +33,29 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const HomePageButtton(
+                   HomePageButtton(
                     menuimage: "assets/images/menu.png",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  }
+                    
                   ),
                   Image.asset(
                     "assets/images/agroconnect_text.png",
                     height: 34,
                     width: 167,
                   ),
-                  const HomePageButtton(
+                   HomePageButtton(
                     menuimage: "assets/images/chat.png",
+                    func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),)
+                    )
+                  }
                   ),
                 ],
               ),
@@ -101,9 +118,27 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  HomePageButtton(menuimage: "assets/images/sun.png"),
-                  HomePageButtton(menuimage: "assets/images/bank2.png"),
-                  HomePageButtton(menuimage: "assets/images/law2.png")
+                  HomePageButtton(menuimage: "assets/images/sun.png",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),)
+                    )
+                  }),
+                  HomePageButtton(menuimage: "assets/images/bank2.png",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const Bank(),)
+                    )
+                  }),
+                  HomePageButtton(menuimage: "assets/images/law2.png",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const laws(),)
+                    )
+                  })
                 ],
               ),
             ),
@@ -131,9 +166,21 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  HomePageButtton(menuimage: "assets/images/Rupee (1).png"),
-                  HomePageButtton(menuimage: "assets/images/home.png"),
-                  HomePageButtton(menuimage: "assets/images/Complaint.png"),
+                  HomePageButtton(menuimage: "assets/images/Rupee (1).png",func:()=> (launchUrlString("https://agmarknet.gov.in/PriceAndArrivals/DatewiseCommodityReport.aspx"),)),
+                  HomePageButtton(menuimage: "assets/images/home.png",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),)
+                    )
+                  }),
+                  HomePageButtton(menuimage: "assets/images/Complaint.png",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),)
+                    )
+                  }),
                 ],
               ),
             )

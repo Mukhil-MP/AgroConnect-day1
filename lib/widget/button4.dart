@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class CustomButton4 extends StatelessWidget {
   final String text;
   final String imagelock;
+  final VoidCallback func;
 
   const CustomButton4({
     Key? key,
     required this.text,
     required this.imagelock,
+    required this.func,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class CustomButton4 extends StatelessWidget {
         decoration: BoxDecoration(
             color: Color(0x77ffffff), boxShadow: [BoxShadow(blurRadius: 10)]),
         child: ElevatedButton(
-            onPressed: () => {},
+            onPressed: func,
             style: ElevatedButton.styleFrom(
               elevation: 0.0,
               backgroundColor: Colors.transparent,

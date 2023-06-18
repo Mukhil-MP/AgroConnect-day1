@@ -1,3 +1,4 @@
+import 'package:agroconnect_day1/screens/wa_menu.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,13 @@ class EditDetails extends StatelessWidget {
 
               Container(
                   margin: const EdgeInsets.only(top: 500 ,left: 150),
-                  child: const CustomButton(text: "Submit")),
+                  child:  CustomButton(text: "Submit",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  })),
             ],
           ),
         ],

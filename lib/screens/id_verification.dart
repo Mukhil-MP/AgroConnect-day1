@@ -1,7 +1,9 @@
+import 'package:agroconnect_day1/screens/otp.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
+//import 'enter_details.dart';
 
 class IdVerification extends StatelessWidget {
   const IdVerification({super.key});
@@ -40,19 +42,11 @@ class IdVerification extends StatelessWidget {
             children: [
               // textfield
               Container(
-                
                 margin: const EdgeInsets.only(top: 250),
                 child: const CustomTextField(
-                  
                   labeltext: "                Verification",
-                  
-                  
-                  
                 ),
               ),
-              
-             
-              
 
               // Container(
               //   margin: const EdgeInsets.only(top: 227),
@@ -67,20 +61,27 @@ class IdVerification extends StatelessWidget {
               // ),
 
               // button
-                Container(
-            // padding: const EdgeInsets.only(left: 21, right: 21),
-            margin: const EdgeInsets.only(top: 10, left: 17),
-            height: 80,
-            width: 1100,
-            child: Image.asset("assets/images/(Upload your agricultural identity card in pdf format).png"),
-          ),
-             
+              Container(
+                // padding: const EdgeInsets.only(left: 21, right: 21),
+                margin: const EdgeInsets.only(top: 10, left: 17),
+                height: 80,
+                width: 1100,
+                child: Image.asset(
+                    "assets/images/(Upload your agricultural identity card in pdf format).png"),
+              ),
 
               Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  child: const CustomButton(text: "Select a file")),
-
-             
+                margin: const EdgeInsets.only(top: 20),
+                child: CustomButton(
+                    text: "Select a file",
+                    func: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Otp(),
+                          ));
+                    }),
+              ),
             ],
           ),
         ],
