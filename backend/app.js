@@ -7,6 +7,8 @@ const memberRouter = require('./routers/memberRouter');
 const scrapeRouter = require('./routers/scrapeRouter');
 const otpRouter = require('./routers/otpRouter');
 const weatherRouter = require('./routers/weatherRouter');
+const complaintRouter = require('./routers/complaintRouter');
+
 const app = express();
 app.use(body_parser.json());
 app.use('/',farmerRouter);
@@ -15,4 +17,5 @@ app.use('/',memberRouter);
 app.use('/',scrapeRouter);
 app.use('/',otpRouter);
 app.use('/',weatherRouter);
+app.use('/',complaintRouter);
 module.exports=app;
