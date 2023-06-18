@@ -1,5 +1,6 @@
 //import 'package:agroconnect_day1/widget/button.dart';
 //import 'package:agroconnect_day1/widget/button2.dart';
+import 'package:agroconnect_day1/screens/create_password.dart';
 import 'package:flutter/material.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -118,7 +119,13 @@ class Otp extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: CustomButton(text: "Verify"))
+                  child: CustomButton(text: "Verify",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const AuthScreen(),)
+                    )
+                  }))
             ],
           ),
         ],

@@ -1,4 +1,5 @@
 //import 'package:agroconnect_day1/widget/button.dart';
+import 'package:agroconnect_day1/screens/enter_details.dart';
 import 'package:agroconnect_day1/widget/button2.dart';
 import 'package:flutter/material.dart';
 
@@ -36,25 +37,53 @@ class UserSelection extends StatelessWidget {
             child: Image.asset('assets/images/pashu.png'),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 150, left: 50),
-                child: Text(
-                  "Select The User",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  child:const Text(
+                    "Select The User",
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+                  ),
                 ),
               ),
-              Container(
-                  margin: const EdgeInsets.only(top: 93, left: 50),
-                  child: customButton2(text: "Farmer")),
-              Container(
-                  margin: const EdgeInsets.only(top: 25, left: 50),
-                  child: customButton2(text: "Ward Member")),
-              Container(
-                  margin: const EdgeInsets.only(top: 25, left: 50),
-                  child: customButton2(text: "Agricultural Officer"))
+              Center(
+                child: Container(
+                    margin: const EdgeInsets.only(top: 93),
+                    child: customButton2(text: "Farmer",
+                    func: ()=>{
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => const EnterDetails(),)
+                      )
+                    },)
+                    ),
+              ),
+              Center(
+                child: Container(
+                    margin: const EdgeInsets.only(top: 25),
+                    child: customButton2(text: "Ward Member",
+                    func: ()=>{
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => const EnterDetails(),)
+                      )
+                    },)),
+              ),
+              Center(
+                child: Container(
+                    margin: const EdgeInsets.only(top: 25),
+                    child: customButton2(text: "Agricultural Officer",
+                    func: ()=>{
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => const EnterDetails(),)
+                      )
+                    }
+                    )),
+              )
             ],
           ),
         ],
@@ -62,3 +91,6 @@ class UserSelection extends StatelessWidget {
     );
   }
 }
+
+
+ 

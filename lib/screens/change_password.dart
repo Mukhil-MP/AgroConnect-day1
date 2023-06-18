@@ -1,3 +1,4 @@
+import 'package:agroconnect_day1/screens/wa_menu.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +56,13 @@ class ChangePassword extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 50),
-                  child: CustomButton(text: "Submit")),
+                  child: CustomButton(text: "Submit",
+                  func: ()=>{
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const WardOffiMenu(),)
+                    )
+                  },)),
             ],
           ),
         ],

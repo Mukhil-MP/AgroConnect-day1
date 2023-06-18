@@ -36,7 +36,7 @@ class Bank extends StatelessWidget {
             child: Image.asset('assets/images/pashu.png'),
           ),
           Container(
-            margin: EdgeInsets.only(top: 100, bottom: 75, left: 25, right: 25),
+            margin: const EdgeInsets.only(top: 100, bottom: 75, left: 25, right: 25),
             height: MediaQuery.of(context).size.height - 75,
             width: MediaQuery.of(context).size.width - 50,
             child: Stack(
