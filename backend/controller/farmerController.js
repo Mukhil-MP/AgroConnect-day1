@@ -9,9 +9,10 @@ exports.register = async (req, res, next) => {
         if (duplicate) {
             throw new Error(`UserName ${phone}, Already Registered`)
         }
+        await otpService.generateAndSendOTP(phone);
         const response = await farmerService.registerFarmer(name,phone,password,district,taluk,block,kb,wardno);
 
-        res.json({ status: true, success: 'Farmer registered successfully',data:otp });
+        res.json({ status: true, success: 'Farmer registered successfully'});
     } catch (err) {
         console.log("---> err -->", err);
         next(err);
