@@ -9,7 +9,6 @@ const otpModel = require('./model/otpModel');
 const complaintModel = require('./model/complaintModel');
 const memberNotificationModel = require('./model/memberNotificationModel');
 const officerNotificationModel = require('./model/officerNotificationModel');
-const chatModel = require('./model/chatModel');
 
 const port = 3000;
 /* 
