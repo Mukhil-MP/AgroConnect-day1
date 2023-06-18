@@ -10,7 +10,7 @@ const weatherRouter = require('./routers/weatherRouter');
 const complaintRouter = require('./routers/complaintRouter');
 const memberNotificationRouter = require('./routers/memberNotificationRouter');
 const officerNotificationRouter = require('./routers/officerNotificationRouter');
-
+const chatRouter = require('./routers/chatRouter');
 const app = express();
 app.use(body_parser.json());
 app.use('/',farmerRouter);
@@ -22,4 +22,5 @@ app.use('/',weatherRouter);
 app.use('/',complaintRouter);
 app.use('/',memberNotificationRouter);
 app.use('/',officerNotificationRouter);
+app.use('/',chatRouter);
 module.exports=app;
