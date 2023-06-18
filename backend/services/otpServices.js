@@ -1,32 +1,37 @@
-//const otpModel = require('../model/otpModel');
-//const fast2sms = require('fast-two-sms');
-/* 
-exports.generateOTP = async (req, res, next) => {
-    try {
-    const otp = generateOTP(6);
-    // send otp to phone number
-    await fast2sms(
-      {
-        message: `Your OTP is ${otp}`,
-        contactNumber: user.phone,
-      },
-      next
-    );
-  } catch (error) {
-    next(error);
-  }
-};
- */
-/* function generateOTP(otpLength) {
-  var digits = "0123456789";
-  let OTP = "";
-  for (let i = 0; i < otpLength; i++) {
-    OTP += digits[Math.floor(Math.random() * 10)];
-  }
-  return OTP;
+const OTPModel = require('../model/otpModel');
+require("dotenv").config();
+const fast2sms = require('fast-two-sms');
+
+class otpService{
+    static async generateAndSendOTP(phone){
+        try{
+          const otpCode = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit OTP 
+          var options = {
+            authorization : process.env.FAST2SMS_API_KEY , 
+            message : 'Your OTP is '+otpCode ,  
+            numbers : [phone]
+          } 
+          fast2sms.sendMessage(options) //Asynchronous Function.
+          .then(response=>{
+            console.log(response)
+          })
+          .catch(err=>{
+            console.log(err)
+          })
+/*         commenting code to save otp to database
+
+const otp = new OTPModel({
+            phone:phone,
+            code: otpCode,
+            createdAt: new Date(),
+          });
+         otp.save({ timeout: 30000 });
+            return await OTPModel.save();
+             */
+        }catch(err){
+            throw err;
+        }
+    }
 }
 
-module.exports = {
-  generateOTP,
-};
- */
+module.exports = otpService;

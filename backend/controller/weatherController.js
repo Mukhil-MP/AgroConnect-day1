@@ -1,23 +1,15 @@
-const weatherModel = require('../model/weatherModel');
-const axios = require('axios');
-require('dotenv').config();
+const weatherServices = require('../services/weatherServices');
 
-async function saveWeatherData(latitude, longitude, apiKey) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.OPENWEATHERMAP_API_KEY}`;
+async function saveWeather(req, res) {
+  const { latitude, longitude, apiKey } = req.body;
 
   try {
-    const response = await axios.get(url);
-    const weatherData = response.data;
-
-    // Create a new Weather object using the weather data
-    const weather = new weatherModel(weatherData);
-    await weather.save();
-
-    console.log('Weather data saved successfully');
+    await weatherServices.saveWeatherData(latitude, longitude, apiKey);
+    res.status(200).json({ message: 'Weather data saved successfully' });
   } catch (error) {
-    console.error('Error saving weather data:', error.response.data);
-    throw new Error('Failed to save weather data');
+    console.error('Error saving weather data:', error);
+    res.status(500).json({ error: 'Failed to save weather data' });
   }
 }
 
-module.exports = { saveWeatherData };
+module.exports = { saveWeather };
