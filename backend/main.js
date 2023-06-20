@@ -7,6 +7,8 @@ const memberModel = require('./model/memberModel');
 const scrapeModel = require('./model/scrapeModel');
 const otpModel = require('./model/otpModel');
 const complaintModel = require('./model/complaintModel');
+const memberNotificationModel = require('./model/memberNotificationModel');
+const officerNotificationModel = require('./model/officerNotificationModel');
 
 const port = 3000;
 /* 
