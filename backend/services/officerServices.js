@@ -9,6 +9,14 @@ class officerService{
             throw err;
         }
     }
+
+    static async getUserByPhone(phone){
+        try{
+            return await officerModel.findOne({phone});
+        }catch(err){
+            console.log(err);
+        }
+    }
 }
 
 module.exports = officerService;
