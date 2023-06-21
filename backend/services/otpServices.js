@@ -18,16 +18,15 @@ class otpService{
           .catch(err=>{
             console.log(err)
           })
-/*         commenting code to save otp to database
 
-const otp = new OTPModel({
-            phone:phone,
-            code: otpCode,
-            createdAt: new Date(),
+
+          const otp = new OTPModel({
+             phone:phone,
+             code: otpCode,
+             createdAt: new Date(),
           });
-         otp.save({ timeout: 30000 });
-            return await OTPModel.save();
-             */
+           otp.save({ timeout: 30000 });// otp deletes after 5 minutes
+           
         }catch(err){
             throw err;
         }
