@@ -2,8 +2,8 @@ const router = require('express').Router();
 const farmerController = require('../controller/farmerController');
 
 router.post('/registerfarmer',farmerController.register);
-router.post('/login', farmerController.login);
-router.post('/forgotPassword', farmerController.forgotPassword);
-router.post('/resetPassword', farmerController.resetPassword); 
+router.post('/farmerlogin', farmerController.login);
+router.post('/farmerforgotPassword', farmerController.forgotPassword);
+router.post('/farmerresetPassword', farmerController.resetPassword); 
 
 module.exports = router;
