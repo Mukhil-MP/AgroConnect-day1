@@ -9,6 +9,14 @@ class memberService{
             throw err;
         }
     }
+
+    static async getUserByPhone(phone){
+        try{
+            return await memberModel.findOne({phone});
+        }catch(err){
+            console.log(err);
+        }
+    }
 }
 
 module.exports = memberService;
