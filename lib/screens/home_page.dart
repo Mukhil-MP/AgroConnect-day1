@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:agroconnect_day1/screens/bank.dart';
 import 'package:agroconnect_day1/screens/laws.dart';
 import 'package:agroconnect_day1/screens/wa_menu.dart';
+import 'package:agroconnect_day1/screens/whatsapp.dart';
 import 'package:flutter/material.dart';
 import 'package:agroconnect_day1/widget/home_page_button.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:dio/dio.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +17,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final dio = Dio();
+  List<dynamic> temp = [];
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  Future init() async {
+    print('start');
+    Response response =
+        (await dio.get('https://agro-7bpt.onrender.com/display'));
+    print(response);
+    // debugPrint(jsonEncode(response));
+
+    setState(() {
+      temp = response.data['data'];
+    });
+    print(temp);
+    print('end');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,30 +59,29 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                   HomePageButtton(
-                    menuimage: "assets/images/menu.png",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const WardOffiMenu(),)
-                    )
-                  }
-                    
-                  ),
+                  HomePageButtton(
+                      menuimage: "assets/images/menu.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const WardOffiMenu(),
+                                ))
+                          }),
                   Image.asset(
                     "assets/images/agroconnect_text.png",
                     height: 34,
                     width: 167,
                   ),
-                   HomePageButtton(
-                    menuimage: "assets/images/chat.png",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),)
-                    )
-                  }
-                  ),
+                  HomePageButtton(
+                      menuimage: "assets/images/chat.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const WhatsApp(),
+                                ))
+                          }),
                 ],
               ),
             ),
@@ -118,27 +143,33 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  HomePageButtton(menuimage: "assets/images/sun.png",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),)
-                    )
-                  }),
-                  HomePageButtton(menuimage: "assets/images/bank2.png",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const Bank(),)
-                    )
-                  }),
-                  HomePageButtton(menuimage: "assets/images/law2.png",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const laws(),)
-                    )
-                  })
+                  HomePageButtton(
+                      menuimage: "assets/images/sun.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ))
+                          }),
+                  HomePageButtton(
+                      menuimage: "assets/images/bank2.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Bank(),
+                                ))
+                          }),
+                  HomePageButtton(
+                      menuimage: "assets/images/law2.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const laws(),
+                                ))
+                          })
                 ],
               ),
             ),
@@ -149,15 +180,23 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(top: 10),
               height: 340,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(color: Colors.transparent, boxShadow: [
-                BoxShadow(
-                    color: Colors.green.withOpacity(0.5),
-                    blurRadius: 3,
-                    spreadRadius: -5,
-                    offset: Offset(-2, -2))
-              ]),
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.green.withOpacity(0.5),
+                      blurRadius: 3,
+                      spreadRadius: -5,
+                      offset: Offset(-2, -2))
+                ],
+              ),
+              child: ListView.builder(
+                itemCount: temp.length,
+                itemBuilder: (context, index) {
+                  return Text(temp[index].toString());
+                },
+              ),
             ),
-
 
             Container(
               alignment: Alignment.bottomCenter,
@@ -166,21 +205,30 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  HomePageButtton(menuimage: "assets/images/Rupee (1).png",func:()=> (launchUrlString("https://agmarknet.gov.in/PriceAndArrivals/DatewiseCommodityReport.aspx"),)),
-                  HomePageButtton(menuimage: "assets/images/home.png",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),)
-                    )
-                  }),
-                  HomePageButtton(menuimage: "assets/images/Complaint.png",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),)
-                    )
-                  }),
+                  HomePageButtton(
+                      menuimage: "assets/images/Rupee (1).png",
+                      func: () => (
+                            launchUrlString(
+                                "https://agmarknet.gov.in/PriceAndArrivals/DatewiseCommodityReport.aspx"),
+                          )),
+                  HomePageButtton(
+                      menuimage: "assets/images/home.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ))
+                          }),
+                  HomePageButtton(
+                      menuimage: "assets/images/Complaint.png",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ))
+                          }),
                 ],
               ),
             )

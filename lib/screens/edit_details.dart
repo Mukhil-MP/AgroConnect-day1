@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../widget/text_field.dart';
 
 class EditDetails extends StatelessWidget {
-  const EditDetails({super.key});
+  TextEditingController controller1 = TextEditingController();
+  EditDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +61,7 @@ class EditDetails extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 200),
                 child: CustomTextField(
+                  controller: controller1,
                   labeltext: "Phone No",
                 ),
               ),

@@ -6,7 +6,8 @@ import '../widget/text_field.dart';
 //import 'enter_details.dart';
 
 class IdVerification extends StatelessWidget {
-  const IdVerification({super.key});
+  late TextEditingController controller1 = TextEditingController();
+  IdVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,8 @@ class IdVerification extends StatelessWidget {
               // textfield
               Container(
                 margin: const EdgeInsets.only(top: 250),
-                child: const CustomTextField(
+                child:  CustomTextField(
+                  controller: controller1,
                   labeltext: "                Verification",
                 ),
               ),

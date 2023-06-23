@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../widget/text_field.dart';
 
 class ChangePassword extends StatelessWidget {
-  const ChangePassword({super.key});
+  TextEditingController controller1 = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
+  ChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,29 +42,34 @@ class ChangePassword extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // textfield
-            
+
               Container(
                 margin: const EdgeInsets.only(top: 205),
                 child: CustomTextField(
+                  controller: controller1,
                   labeltext: "Enter new Password",
                 ),
               ),
-              
+
               Container(
                 margin: const EdgeInsets.only(top: 35),
                 child: CustomTextField(
+                  controller: controller2,
                   labeltext: "Confirm new Password",
                 ),
               ),
               Container(
                   margin: const EdgeInsets.only(top: 50),
-                  child: CustomButton(text: "Submit",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const WardOffiMenu(),)
-                    )
-                  },)),
+                  child: CustomButton(
+                    text: "Submit",
+                    func: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WardOffiMenu(),
+                          ))
+                    },
+                  )),
             ],
           ),
         ],

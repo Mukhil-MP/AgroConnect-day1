@@ -123,7 +123,7 @@ class Otp extends StatelessWidget {
                   func: ()=>{
                     Navigator.push(context,
                     MaterialPageRoute(
-                      builder: (context) => const AuthScreen(),)
+                      builder: (context) =>  AuthScreen(),)
                     )
                   }))
             ],

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../widget/text_field.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
+  TextEditingController controller1 = TextEditingController();
+   AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +47,22 @@ class AuthScreen extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 65),
                 child: CustomTextField(
+                  controller: controller1,
                   labeltext: "Create Password",
                 ),
               ),
 
               Container(
                   margin: const EdgeInsets.only(top: 50),
-                  child: CustomButton(text: "Submit",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),)
-                    )
-                  })),
+                  child: CustomButton(
+                      text: "Submit",
+                      func: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ))
+                          })),
             ],
           ),
         ],

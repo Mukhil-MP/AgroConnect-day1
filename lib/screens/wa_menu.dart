@@ -60,7 +60,7 @@ class WardOffiMenu extends StatelessWidget {
                     text: "Edit Personal Details",func: ()=>{
                     Navigator.push(context,
                     MaterialPageRoute(
-                      builder: (context) => const EditDetails(),)
+                      builder: (context) =>  EditDetails(),)
                     )
                   },
                     imagelock: "assets/images/profile.png"),
@@ -96,7 +96,7 @@ class WardOffiMenu extends StatelessWidget {
                     func: ()=>{
                     Navigator.push(context,
                     MaterialPageRoute(
-                      builder: (context) => const ChangePassword(),)
+                      builder: (context) =>  ChangePassword(),)
                     )
                   },
                     imagelock: "assets/images/password.png"),
@@ -120,7 +120,7 @@ class WardOffiMenu extends StatelessWidget {
                     func: ()=>{
                     Navigator.push(context,
                     MaterialPageRoute(
-                      builder: (context) => const LoginSign(),)
+                      builder: (context) =>  LoginSign(),)
                     )
                   }, imagelock: "assets/images/logout.png"),
               )
