@@ -26,10 +26,26 @@ class otpService{
              createdAt: new Date(),
           });
            otp.save({ timeout: 30000 });// otp deletes after 5 minutes
-           
+           return otpCode;
         }catch(err){
             throw err;
         }
+    }
+
+    static async verifyOTP(phone, otpCode) {
+      try {
+        const savedOTP = await OTPModel.findOne({ phone, code: otpCode });
+        if (savedOTP) {
+          // OTP is correct
+          //await savedOTP.remove(); // Remove the OTP from the database after verification
+          return true;
+        } else {
+          // OTP is incorrect or expired
+          return false;
+        }
+      } catch (err) {
+        throw err;
+      }
     }
 }
 
