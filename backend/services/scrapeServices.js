@@ -13,11 +13,27 @@ class scrapeService {
 
       $('marquee a').each((index, element) => {
         const text = $(element).text();
-          englishTextArray.push(text);
-
+        englishTextArray.push(text);
       });
+
+      // Delete the previous document
+      await scrapeModel.deleteMany({});
+
+      // Create and save the new document with the fetched data
       const createNotification = new scrapeModel({ data: englishTextArray });
-      return await createNotification.save();      
+      return await createNotification.save();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async getSavedData() {
+    try {
+      const savedData = await scrapeModel.findOne().sort({ _id: -1 }).exec();
+      if (!savedData) {
+        throw new Error('No data found');
+      }
+      return savedData.data;
     } catch (err) {
       throw err;
     }

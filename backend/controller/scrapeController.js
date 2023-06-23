@@ -11,3 +11,13 @@ exports.fetch = async (req, res, next) => {
         next(err);
     }
 }
+
+exports.display = async (req, res, next) => {
+    try {
+        const data = await scrapeService.getSavedData();
+        res.json({ success: true, data });
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        next(err);
+}
+}
