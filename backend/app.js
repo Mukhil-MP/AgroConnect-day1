@@ -1,6 +1,7 @@
 const express = require('express');
 const body_parser = require('body-parser');
 const bcrypt = require('bcrypt');
+const morgan = require('morgan');
 const userRouter = require('./routers/userRouter');
 //const officerRouter = require('./routers/officerRouter');
 //const memberRouter = require('./routers/memberRouter');
@@ -13,6 +14,7 @@ const officerNotificationRouter = require('./routers/officerNotificationRouter')
 
 const app = express();
 app.use(body_parser.json());
+app.use(morgan('tiny'));
 app.use('/',userRouter);
 //app.use('/',officerRouter);
 //app.use('/',memberRouter);

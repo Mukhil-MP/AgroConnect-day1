@@ -1,4 +1,5 @@
 //const User = require('./user');
+
 const app = require('./app');
 const db = require('./config/db')
 const farmerModel = require('./model/farmerModel');
