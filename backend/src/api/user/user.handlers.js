@@ -3,15 +3,23 @@ const services = require('./user');
 
 module.exports.signup = async (req, res) => {
     const mobileNumber = req.body.mobileNumber;
-    const otp = await services.otpCreate(mobileNumber);
     const isRegistered = await services.isRegistered(mobileNumber);
+    if(isRegistered){
+      return res.status(StatusCodes.CREATED).json({
+        success: true,
+        msg: 'User present',
+        isRegistered:isRegistered
+      });
+    }else{
+      const otp = await services.otpCreate(mobileNumber);
+      return res.status(StatusCodes.CREATED).json({
+        success: true,
+        msg: 'OTP Send',
+        otp: otp,
+        isRegistered:isRegistered
+      });
+    }
 
-    return res.status(StatusCodes.CREATED).json({
-      success: true,
-      msg: 'OTP Send',
-      otp: otp,
-      isRegistered:isRegistered
-    });
   };
 
   module.exports.create = async (req, res) => {
