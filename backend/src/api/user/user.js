@@ -1,10 +1,9 @@
 const models = require('../../models');
 const { generateOtp, fast2sms } = require('./user.helpers');
 const { generateAPIError } = require('../../errors');
-const { passwordCreate } = require('./user.handlers');
 
 module.exports.otpCreate = async (mobileNumber) => {
-    const otp = generateOtp(6);
+    const otp = generateOtp(4);
     console.log(otp);
 
     fast2sms(otp, mobileNumber);
@@ -33,9 +32,9 @@ module.exports.otpCreate = async (mobileNumber) => {
   }
 
   module.exports.loginUser = async(mobileNumber,password)=>{
-    let user = await models.User.findOne({mobileNumber:mobileNumber});
+    const user = await models.User.findOne({mobileNumber:mobileNumber});
     if (!user) {
-        throw generateAPIError('User not found',402)
+        throw generateAPIError('User not found',401)
     }
     const isPasswordCorrect = await user.comparePassword(password);
     if (isPasswordCorrect === false) {
@@ -46,31 +45,32 @@ module.exports.otpCreate = async (mobileNumber) => {
 
   module.exports.userEdit = async (mobileNumber, newDetails) => {
     const user = await models.User.findOne({ mobileNumber: mobileNumber })
+
   
-    if (newDetails.district) {
-      user.address = newDetails.address;
+    if (newDetails?.district) {
+      user.district = newDetails?.district;
     }
-    if (newDetails.taluk) {
-      user.pinCode = newDetails.pinCode;
+    if (newDetails?.taluk) {
+      user.taluk = newDetails?.taluk;
     }
   
-    if (newDetails.block) {
-      user.district = newDetails.district;
+    if (newDetails?.block) {
+      user.block = newDetails?.block;
     }
-    if (newDetails.kb) {
-      user.state = newDetails.state;
+    if (newDetails?.kb) {
+      user.kb = newDetails?.kb;
     }
-    if (newDetails.wardno) {
-      user.dob = newDetails.dob;
+    if (newDetails?.wardno) {
+      user.wardno = newDetails?.wardno;
     }
-    if(newDetails.newPassword){
-        const isPasswordCorrect = await user.comparePassword(newDetails.oldPassword);
-        if (isPasswordCorrect === false) {
-            throw generateAPIError('Wrong Password',401)
-        }
-        if(isPasswordCorrect===true){
-            user.password=newDetails.password
-        }
+    if(newDetails?.newPassword){
+      const isPasswordCorrect = await user.comparePassword(newDetails?.oldPassword);
+      if (isPasswordCorrect === false) {
+          throw generateAPIError('Wrong Password',401)
+      }
+    
+      user.password=newDetails?.newPassword
+
     }
   
     await user.save();

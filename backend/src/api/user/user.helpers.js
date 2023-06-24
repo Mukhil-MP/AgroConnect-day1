@@ -10,15 +10,11 @@ exports.generateOtp = (otp_length) => {
 };
 
 exports.fast2sms = async (message, contactNumber) => {
-  try {
     if (process.env.NODE_ENV === 'production') {
       const res = await fast2sms.sendMessage({
-        authorization: process.env.FAST2SMS,
+        authorization: process.env.FAST2SMS_API_KEY,
         message,
         numbers: [contactNumber]
       });
     }
-  } catch (error) {
-    next(error);
-  }
 };

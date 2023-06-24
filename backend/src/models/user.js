@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcryptjs");
 
 
 
@@ -8,10 +8,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "name can't be empty"]
     },
-    phone: {
+    mobileNumber: {
         type: Number,
         unique: true,
-        required: [true, "name can't be empty"]
+        required: [true, "phone no can't be empty"]
     },
     password: {
         type: String,
@@ -43,33 +43,17 @@ const UserSchema = new mongoose.Schema({
 },{timestamps:true});
 
 
-UserSchema.pre("save",async function(){
-    var user = this;
-    if(!user.isModified("password")){
-        return
-    }
-    try{
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(user.password,salt);
-
-        user.password = hash;
-    }catch(err){
-        throw err;
-    }
-});
+UserSchema.pre("save", async function () {
+    if (!this.isModified("password")) return;
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  });
 
 
-//used while signIn decrypt
-UserSchema.methods.comparePassword = async function (candidatePassword) {
-    try {
-        console.log('----------------no password',this.password);
-        // @ts-ignore
-        const isMatch = await bcrypt.compare(candidatePassword, this.password);
-        return isMatch;
-    } catch (error) {
-        throw error;
-    }
-};
+  UserSchema.methods.comparePassword = async function (candidatePassword) {
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    return isMatch;
+  };
 
 module.exports= mongoose.model('User',UserSchema);
 

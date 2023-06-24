@@ -1,5 +1,5 @@
 const scrapperRouter = require('express').Router();
-const scrapper = require('../controller/scrapeController');
+const scrapper = require('./scrapper.handlers')
 
 scrapperRouter.get('/fetchdata',scrapper.fetch);
 

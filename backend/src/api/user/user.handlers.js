@@ -33,7 +33,7 @@ module.exports.signup = async (req, res) => {
   }
 
   module.exports.login = async(req,res)=>{
-    const user = await services.loginUser(req.mobileNumber,req.password)
+    const user = await services.loginUser(req.body.mobileNumber,req.body.password)
     return res.status(StatusCodes.CREATED).json({
         success: true,
         msg: 'Logged In',
@@ -42,7 +42,7 @@ module.exports.signup = async (req, res) => {
   }
 
   module.exports.edit = async (req, res) => {
-    const user = await services.userEdit(req.user.mobileNumber, req.body);
+    const user = await services.userEdit(req.body.mobileNumber, req.body);
   
     return res.status(StatusCodes.OK).json({
       success: true,

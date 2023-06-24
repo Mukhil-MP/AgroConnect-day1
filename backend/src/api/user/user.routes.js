@@ -5,7 +5,7 @@ const user = require('./user.handlers');
 userRouter.post("/signup",user.signup)
 userRouter.post("/create",user.create)
 userRouter.post('/password',user.passwordCreate)
-userRouter.post('login',user.login)
+userRouter.post('/login',user.login)
 userRouter.patch('/edit',user.edit)
 
 module.exports = userRouter;

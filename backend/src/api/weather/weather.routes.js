@@ -3,6 +3,6 @@ const weatherRouter = express.Router();
 const weather = require('./weather.handlers');
 
 
-weatherRouter.post('/weather', weather.saveWeather);
+weatherRouter.get('/data', weather.fetchWeather);
 
 module.exports = weatherRouter;
