@@ -12,6 +12,14 @@ const mongoSanitize = require('express-mongo-sanitize');
 const fileUpload = require('express-fileupload');
 require('express-async-errors');
 require('dotenv').config({ path: path.join(root_dir, `.env`) });
+const cloudinary = require("cloudinary").v2;
+
+//cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 // cors
 const whitelist = [
@@ -20,7 +28,7 @@ const whitelist = [
   'http://localhost:3000/'
 ];
 
-app.use(fileUpload({ createParentPath: true }));
+app.use(fileUpload({ useTempFiles: true }));
 const corsOptions = {
   origin(origin, callback) {
     if (!origin) {

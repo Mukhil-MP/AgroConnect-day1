@@ -39,7 +39,9 @@
     "twilio": "^4.11.2",
     "validator": "^13.7.0",
     "whatsappcloudapi_wrapper": "^1.0.13",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "cloudinary": "^1.26.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

@@ -1,5 +1,9 @@
 const { StatusCodes } = require('http-status-codes');
 const services = require('./user');
+const path = require("path");
+const cloudinary = require("cloudinary").v2;
+const fs = require("fs");
+const { generateAPIError } = require('../../errors');
 
 module.exports.signup = async (req, res) => {
     const mobileNumber = req.body.mobileNumber;
@@ -60,4 +64,34 @@ module.exports.signup = async (req, res) => {
   };
 
 
+  module.exports.upload = async (req, res) => {
+    if (!req.files) {
+      throw generateAPIError("No files uploaded",401);
+    }
+    const pdf = req.files.pdf;
   
+    if (!pdf.mimetype.startsWith("application/pdf")) {
+      throw generateAPIError("Plz upload an pdf",401);
+    }
+  
+    // const maxSize = 500000;
+    // if (pdf.size > maxSize) {
+    //   throw generateAPIError(
+    //     "Plz upload pdf smaller than 500kb",401
+    //   );
+    // }
+    const result = await cloudinary.uploader.upload(
+      req.files.pdf.tempFilePath,
+      {
+        use_filename: true,
+        folder: "agro",
+      }
+    );
+    fs.unlinkSync(req.files.pdf.tempFilePath);
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      msg: 'Upload',
+      pdf: { src: result.secure_url }
+    });
+  };
