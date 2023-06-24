@@ -1,5 +1,5 @@
 {
-  "name": "AgroConnect",
+  "name": "agroconnect",
   "version": "1.0.0",
   "description": "android application to aid farmers",
   "main": "main.js",
@@ -21,6 +21,32 @@
     "fast-two-sms": "^2.0.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.2",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.4.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.6.0",
+    "firebase": "^9.22.1",
+    "helmet": "^6.0.0",
+    "http-status-codes": "^2.2.0",
+    "joi": "^17.6.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "node-cron": "^3.0.2",
+    "node-geocoder": "^4.2.0",
+    "pdfkit": "^0.13.0",
+    "request": "^2.88.2",
+    "twilio": "^4.11.2",
+    "validator": "^13.7.0",
+    "whatsappcloudapi_wrapper": "^1.0.13",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   }
 }
