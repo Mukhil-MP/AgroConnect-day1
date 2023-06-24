@@ -10,5 +10,12 @@ userRouter.patch('/edit',user.edit)
 userRouter.post('/upload',user.upload)
 userRouter.post('/notify/upload',user.notifyUpload)
 userRouter.post('/notify/view',user.notifyView)
+userRouter.post('/complaint/register',user.complaintRegister)
+userRouter.post("/complaint/view",user.complaintView)
+userRouter.post('/complaint/new',user.complaintNew)
+userRouter.post('/complaint/notResponded',user.complaintNotRes)
+userRouter.post('/complaint/responded',user.complaintRes)
+userRouter.post('/complaint/setNotReplyed',user.complaintSetNotReplyed)
+userRouter.post("/complaint/giveReply",user.complaintGiveReply)
 
 module.exports = userRouter;

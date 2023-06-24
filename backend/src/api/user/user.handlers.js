@@ -132,3 +132,100 @@ module.exports.signup = async (req, res) => {
     officer_no:officerNotify?.length
   });
 };
+
+module.exports.complaintRegister = async (req, res) => {
+  const mobileNumber = req.body.mobileNumber
+  const user = await models.User.findOne({mobileNumber:mobileNumber})
+  const officer = await models.User.findOne({kb:user.kb,role:"officer"})
+
+  const complaint =  await models.Complaint.create({user:user._id,complaint:req.body.complaint,officer:officer._id})
+
+
+
+return res.status(StatusCodes.OK).json({
+  success: true,
+  msg: 'Complaint Created',
+  complaint:complaint
+});
+};
+
+module.exports.complaintView = async (req, res) => {
+  const mobileNumber = req.body.mobileNumber
+  const user = await models.User.findOne({mobileNumber:mobileNumber})
+
+  const complaints = await models.Complaint.find({user:user._id})
+
+
+return res.status(StatusCodes.OK).json({
+  success: true,
+  msg: 'Complaints',
+  complaints:complaints
+});
+};
+
+module.exports.complaintNew = async (req, res) => {
+  const mobileNumber = req.body.mobileNumber
+  const officer = await models.User.findOne({mobileNumber:mobileNumber})
+  const newComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notSeen"}) 
+
+
+return res.status(StatusCodes.OK).json({
+  success: true,
+  msg: 'New Complaints',
+  complaints: newComplaints
+});
+};
+
+
+module.exports.complaintNotRes = async (req, res) => {
+  const mobileNumber = req.body.mobileNumber
+  const officer = await models.User.findOne({mobileNumber:mobileNumber})
+  const notRepComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notReplyed"}) 
+
+
+return res.status(StatusCodes.OK).json({
+  success: true,
+  msg: 'Not Replyed Complaints',
+  complaints: notRepComplaints
+});
+};
+
+module.exports.complaintRes = async (req, res) => {
+  const mobileNumber = req.body.mobileNumber
+  const officer = await models.User.findOne({mobileNumber:mobileNumber})
+  const repComplaints = await models.Complaint.find({officer:officer._id,complaintType:"replyed"}) 
+
+
+return res.status(StatusCodes.OK).json({
+  success: true,
+  msg: 'Not Replyed Complaints',
+  complaints: repComplaints
+});
+};
+
+
+
+module.exports.complaintSetNotReplyed = async(req,res)=>{
+  const setComplaint = await models.Complaint.findById(req.body.id)
+  setComplaint.complaintType = "notReplyed"
+  await setComplaint.save()
+
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    msg: 'Not Replyed Complaints',
+    complaints: setComplaint
+  });
+}
+
+module.exports.complaintGiveReply = async(req,res)=>{
+  const complaint = await models.Complaint.findById(req.body.id)
+  complaint.reply = req.body.reply
+  complaint.complaintType = "replyed"
+  await complaint.save()
+
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    msg: 'Replyed Complaints',
+    complaints: complaint
+  });
+}

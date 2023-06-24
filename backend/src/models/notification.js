@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 
 
-const notificationSchema = new mongoose.Schema({
+const NotificationSchema = new mongoose.Schema({
     wardMember:{
         type: mongoose.Types.ObjectId,
         ref: 'User'
@@ -19,5 +19,5 @@ const notificationSchema = new mongoose.Schema({
 
 
 
-module.exports= mongoose.model('Notification',notificationSchema);
+module.exports= mongoose.model('Notification',NotificationSchema);
 
