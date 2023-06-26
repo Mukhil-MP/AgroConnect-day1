@@ -117,11 +117,12 @@ class FarmerMenu extends StatelessWidget {
                 child: CustomButton4(
                     text: "Logout",
                     func: () => {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginSign(),
-                              ))
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginSign()),
+                            (route) => route.isCurrent,
+                          )
                         },
                     imagelock: "assets/images/logout.png"),
               )
