@@ -1,9 +1,7 @@
 //import 'package:agroconnect_day1/widget/button.dart';
 //import 'package:agroconnect_day1/widget/button2.dart';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 //import '../widget/text_field.dart';

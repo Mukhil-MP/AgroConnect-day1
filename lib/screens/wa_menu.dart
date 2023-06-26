@@ -1,14 +1,19 @@
 //import 'package:agroconnect_day1/widget/button.dart';
+import 'package:agroconnect_day1/screens/Faq.dart';
 import 'package:agroconnect_day1/screens/change_password.dart';
 import 'package:agroconnect_day1/screens/edit_details.dart';
 import 'package:agroconnect_day1/screens/login_sigin.dart';
+import 'package:agroconnect_day1/screens/notify.dart';
 import 'package:agroconnect_day1/widget/button4.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/number_symbols_data.dart';
 
 //import '../widget/text_field.dart';
 
 class WardOffiMenu extends StatelessWidget {
-  const WardOffiMenu({super.key});
+  WardOffiMenu({super.key, required this.number, required this.role});
+  String number;
+  String role;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +49,7 @@ class WardOffiMenu extends StatelessWidget {
             children: [
               // textfield
               Container(
+                  alignment: Alignment.center,
                   margin: const EdgeInsets.only(top: 130),
                   height: 50,
                   width: 250,
@@ -52,77 +58,96 @@ class WardOffiMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(54),
                     boxShadow: [BoxShadow(blurRadius: 10)],
                   ),
-                  child: Text('db data')),
+                  child: Text(number,
+                      style: TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold))),
 
               Container(
                 margin: const EdgeInsets.only(top: 60),
                 child: CustomButton4(
-                    text: "Edit Personal Details",func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) =>  EditDetails(),)
-                    )
-                  },
+                    text: "Edit Personal Details",
+                    func: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditDetails(
+                                  number: number,
+                                  role: role,
+                                ),
+                              ))
+                        },
                     imagelock: "assets/images/profile.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Application Form",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const WardOffiMenu(),)
-                    )
-                  },
+                    func: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    WardOffiMenu(number: number, role: role),
+                              ))
+                        },
                     imagelock: "assets/images/form.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Notify Farmers",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const WardOffiMenu(),)
-                    )
-                  },
+                    func: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    Notify(number: number, role: role),
+                              ))
+                        },
                     imagelock: "assets/images/notify.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Change Password",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) =>  ChangePassword(),)
-                    )
-                  },
+                    func: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ChangePassword(
+                                  number: number,
+                                  role: role,
+                                ),
+                              ))
+                        },
                     imagelock: "assets/images/password.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "About/FAQ",
-                    
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => const WardOffiMenu(),)
-                    )
-                  }, imagelock: "assets/images/faq.png"),
+                    func: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FAQ(),
+                              ))
+                        },
+                    imagelock: "assets/images/faq.png"),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: CustomButton4(
                     text: "Logout",
-                    func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) =>  LoginSign(),)
-                    )
-                  }, imagelock: "assets/images/logout.png"),
+                    func: () => {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginSign()),
+                            (route) => route.isCurrent,
+                          )
+                        },
+                    imagelock: "assets/images/logout.png"),
               )
             ],
           ),

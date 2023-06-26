@@ -1,3 +1,4 @@
+import 'package:agroconnect_day1/screens/enter_phone.dart';
 import 'package:agroconnect_day1/screens/home_page.dart';
 import 'package:agroconnect_day1/screens/user_selection.dart';
 import 'package:agroconnect_day1/widget/button.dart';
@@ -8,24 +9,33 @@ import '../widget/text_field.dart';
 
 class LoginSign extends StatelessWidget {
   final dio = Dio();
-  late Response response;
-  TextEditingController controller1 = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
+  final TextEditingController controller1 = TextEditingController();
+  final TextEditingController controller2 = TextEditingController();
   LoginSign({super.key});
 
   _requestLogin(context, phone, password) async {
     print(phone);
     print(password);
-    response = await dio.post('https://agro-7bpt.onrender.com/login',
-        data: {"phone": phone, "password": password});
+    Response response = await dio.post(
+        'https://argo-backend.onrender.com/api/v1/user/login',
+        data: {"mobileNumber": phone, "password": password});
     print("your response" + response.data.toString());
 
-    var userType = response.data.toString();
-
+    var userType = response.data['user']['role'].toString();
+    print(userType);
     if (response.data['success']) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return HomePage();
-      }));
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomePage(number: phone, role: userType)),
+        (route) => route.isCurrent,
+      );
+    } else {
+      if (response.data['message'] == 'User not found') {
+        _showMyDialog(context, 'User Not Found');
+      } else {
+        _showMyDialog(context, 'Wrong Password');
+      }
     }
 
     // Navigator.push(
@@ -33,6 +43,33 @@ class LoginSign extends StatelessWidget {
     //     MaterialPageRoute(
     //       builder: (context) => const HomePage(),
     //     ));
+  }
+
+  Future<void> _showMyDialog(context, String textdis) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(textdis),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -71,6 +108,7 @@ class LoginSign extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 200),
                 child: CustomTextField(
+                  obscureText: false,
                   controller: controller1,
                   labeltext: "Enter your ID",
                 ),
@@ -78,20 +116,21 @@ class LoginSign extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 17),
                 child: CustomTextField(
+                  obscureText: true,
                   controller: controller2,
                   labeltext: "Enter Your Password",
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 150),
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "forgot password ?",
-                    style: TextStyle(fontSize: 20, color: Colors.red),
-                  ),
-                ),
-              ),
+              // Container(
+              //   margin: const EdgeInsets.only(left: 150),
+              //   child: TextButton(
+              //     onPressed: () {},
+              //     child: Text(
+              //       "forgot password ?",
+              //       style: TextStyle(fontSize: 20, color: Colors.red),
+              //     ),
+              //   ),
+              // ),
 
               // Container(
               //   margin: const EdgeInsets.only(top: 227),
@@ -131,7 +170,7 @@ class LoginSign extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const UserSelection(),
+                            builder: (context) => PhoneVerify(),
                           ))
                     },
                   ))

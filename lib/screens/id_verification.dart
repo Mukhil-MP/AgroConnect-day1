@@ -1,5 +1,8 @@
-import 'package:agroconnect_day1/screens/otp.dart';
+import 'dart:io';
+
+import 'package:agroconnect_day1/screens/create_password.dart';
 import 'package:agroconnect_day1/widget/button.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/text_field.dart';
@@ -7,7 +10,9 @@ import '../widget/text_field.dart';
 
 class IdVerification extends StatelessWidget {
   late TextEditingController controller1 = TextEditingController();
-  IdVerification({super.key});
+  IdVerification({super.key, required this.number,required this.role});
+  String number;
+  String role;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,8 @@ class IdVerification extends StatelessWidget {
               // textfield
               Container(
                 margin: const EdgeInsets.only(top: 250),
-                child:  CustomTextField(
+                child: CustomTextField(
+                  obscureText: false,
                   controller: controller1,
                   labeltext: "                Verification",
                 ),
@@ -76,11 +82,19 @@ class IdVerification extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 20),
                 child: CustomButton(
                     text: "Select a file",
-                    func: () {
+                    func: () async {
+                      FilePickerResult? result =
+                          await FilePicker.platform.pickFiles();
+
+                      if (result != null) {
+                        File file = File(result.files.single.path ?? '');
+                      } else {
+                        // User canceled the picker
+                      }
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Otp(),
+                            builder: (context) => AuthScreen(number: number,role: role),
                           ));
                     }),
               ),

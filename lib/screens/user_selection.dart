@@ -56,7 +56,7 @@ class UserSelection extends StatelessWidget {
                     func: ()=>{
                       Navigator.push(context,
                       MaterialPageRoute(
-                        builder: (context) => const EnterDetails(),)
+                        builder: (context) =>  EnterDetails(roles: "farmer"),)
                       )
                     },)
                     ),
@@ -68,7 +68,7 @@ class UserSelection extends StatelessWidget {
                     func: ()=>{
                       Navigator.push(context,
                       MaterialPageRoute(
-                        builder: (context) => const EnterDetails(),)
+                        builder: (context) => EnterDetails(roles: 'wardMember'),)
                       )
                     },)),
               ),
@@ -79,7 +79,7 @@ class UserSelection extends StatelessWidget {
                     func: ()=>{
                       Navigator.push(context,
                       MaterialPageRoute(
-                        builder: (context) => const EnterDetails(),)
+                        builder: (context) =>  EnterDetails(roles:'officer'),)
                       )
                     }
                     )),

@@ -1,21 +1,63 @@
+import 'package:agroconnect_day1/screens/create_password.dart';
 import 'package:agroconnect_day1/screens/id_verification.dart';
 import 'package:agroconnect_day1/widget/button.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../widget/text_field.dart';
 
 class EnterDetails extends StatefulWidget {
-  const EnterDetails({super.key});
+  String roles = '';
+  
+
+  EnterDetails({super.key, required this.roles});
 
   @override
   State<EnterDetails> createState() => _EnterDetailsState();
 }
 
 class _EnterDetailsState extends State<EnterDetails> {
+  final dio = Dio();
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();
 
+  enterdetails(context, name, number, districtname, talukname, blockname,
+      kbname, wardname) async {
+    Response response = await dio
+        .post('https://argo-backend.onrender.com/api/v1/user/create', data: {
+      "name": name,
+      "mobileNumber": number,
+      "district": districtname,
+      "taluk": talukname,
+      "block": blockname,
+      "kb": kbname,
+      "wardno": wardname,
+      "role": widget.roles
+    });
+    print("your response" + response.data.toString());
+    if (response.data['success']) {
+      if (widget.roles == 'officer') {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => IdVerification(number: number,role :widget.roles),
+            ));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AuthScreen(number: number,role: widget.roles),
+            ));
+      }
+    } else {}
+  }
+
+  String districtname = '';
+  String talukname = '';
+  String blockname = '';
+  String kbname = '';
+  String wardname = '';
   List district = [
     {"id": 1, "name": "Thiruvanandhapuram"},
     {"id": 2, "name": "Kollam"},
@@ -172,6 +214,7 @@ class _EnterDetailsState extends State<EnterDetails> {
               Container(
                 margin: const EdgeInsets.only(top: 200),
                 child: CustomTextField(
+                  obscureText: false,
                   controller: controller1,
                   labeltext: "Name",
                 ),
@@ -179,6 +222,7 @@ class _EnterDetailsState extends State<EnterDetails> {
               Container(
                 margin: const EdgeInsets.only(top: 17),
                 child: CustomTextField(
+                  obscureText: false,
                   controller: controller2,
                   labeltext: "Phone No",
                 ),
@@ -187,6 +231,9 @@ class _EnterDetailsState extends State<EnterDetails> {
                   context, "District", this.districtID, this.district,
                   (onChanged) {
                 setState(() {
+                  this.districtname =
+                      district[int.parse(onChanged) - 1]['name'];
+                  print(districtname);
                   this.districtID = onChanged;
                 });
 
@@ -219,6 +266,8 @@ class _EnterDetailsState extends State<EnterDetails> {
               }),
               FormHelper.dropDownWidget(context, "Taluk", talukID, taluk,
                   (onChanged) {
+                this.talukname = taluk[int.parse(onChanged) - 1]['name'];
+                print(talukname);
                 talukID = onChanged;
                 print("Selected taluk: $talukID");
               }, (onValidate) {
@@ -230,6 +279,8 @@ class _EnterDetailsState extends State<EnterDetails> {
               FormHelper.dropDownWidget(context, "Block", blockID, block,
                   (onChanged) {
                 setState(() {
+                  this.blockname = block[int.parse(onChanged) - 1]['name'];
+                  print(blockname);
                   blockID = onChanged;
                 });
 
@@ -251,6 +302,8 @@ class _EnterDetailsState extends State<EnterDetails> {
               FormHelper.dropDownWidget(
                   context, "Krishi Bhavan", kbID, krishiBhavan, (onChanged) {
                 setState(() {
+                  this.kbname = krishiBhavan[int.parse(onChanged) - 1]['name'];
+                  print(kbname);
                   kbID = onChanged;
                 });
 
@@ -270,6 +323,8 @@ class _EnterDetailsState extends State<EnterDetails> {
               }),
               FormHelper.dropDownWidget(context, "Ward", wardID, ward,
                   (onChanged) {
+                this.wardname = ward[int.parse(onChanged) - 1]['name'];
+                print(wardname);
                 wardID = onChanged;
                 print("Selected district: $wardID");
               }, (onValidate) {
@@ -298,11 +353,15 @@ class _EnterDetailsState extends State<EnterDetails> {
                   child: CustomButton(
                       text: "Submit",
                       func: () => {
-                            Navigator.push(
+                            enterdetails(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => IdVerification(),
-                                ))
+                                controller1.text,
+                                controller2.text,
+                                districtname,
+                                talukname,
+                                blockname,
+                                kbname,
+                                wardname)
                           })),
             ],
           ),

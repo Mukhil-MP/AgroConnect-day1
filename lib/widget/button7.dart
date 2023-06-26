@@ -13,8 +13,8 @@ class CustomButton7 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      width: 190,
+      height: 70,
+      width: 150,
       decoration: BoxDecoration(
           color: Color.fromARGB(255, 243, 244, 243),
           borderRadius: BorderRadius.circular(20),

@@ -1,15 +1,34 @@
 //import 'package:agroconnect_day1/widget/button.dart';
 //import 'package:agroconnect_day1/widget/button2.dart';
 import 'package:agroconnect_day1/screens/create_password.dart';
+import 'package:agroconnect_day1/screens/login_sigin.dart';
+import 'package:agroconnect_day1/screens/user_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:agroconnect_day1/widget/button.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 //import '../widget/text_field.dart';
 
-class Otp extends StatelessWidget {
-  const Otp({super.key});
+class Otp extends StatefulWidget {
+  final otpcode;
+  const Otp({super.key, required this.otpcode});
+  
 
+  @override
+  State<Otp> createState() => _OtpState();
+}
+
+class _OtpState extends State<Otp> {
+  String otpentered = '';
+
+   check(){
+    if (widget.otpcode == otpentered) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => UserSelection(),));
+    } else {
+      Navigator.push(context, MaterialPageRoute(builder:(context) => LoginSign(),));
+      
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +93,7 @@ class Otp extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 30),
                 height: 40,
                 child: OtpTextField(
+                  obscureText: true,
                   borderRadius: BorderRadius.circular(100),
                   fillColor: Colors.white,
                   decoration: InputDecoration(fillColor: Colors.black),
@@ -87,14 +107,9 @@ class Otp extends StatelessWidget {
                   },
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode) {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text("Verification Code"),
-                            content: Text('Code entered is $verificationCode'),
-                          );
-                        });
+                    setState(() {
+                      otpentered = verificationCode;
+                    });
                   }, // end onSubmit
                 ),
               ),
@@ -119,13 +134,11 @@ class Otp extends StatelessWidget {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: CustomButton(text: "Verify",
-                  func: ()=>{
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) =>  AuthScreen(),)
-                    )
-                  }))
+                  child: CustomButton(
+                      text: "Verify",
+                      func: () => {
+                            check()
+                          }))
             ],
           ),
         ],
