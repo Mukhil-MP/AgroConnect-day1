@@ -111,7 +111,7 @@ module.exports.signup = async (req, res) => {
     const mobileNumber = req.body.mobileNumber
     const user = await models.User.findOne({mobileNumber:mobileNumber})
     console.log(user)
-    const wardMember = await models.User.find({kb:user.kb,wardno:user.wardno,role:'wardMember'})
+    const wardMember = await models.User.findOne({kb:user.kb,wardno:user.wardno,role:'wardMember'})
     const officer = await models.User.findOne({kb:user.kb,role:'officer'})
 
     console.log(wardMember)
