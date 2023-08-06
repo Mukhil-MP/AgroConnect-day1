@@ -15,6 +15,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:dio/dio.dart';
 
+import 'complaints_received.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({super.key, required this.number, required this.role});
   String number;
@@ -336,6 +338,15 @@ class _HomePageState extends State<HomePage> {
                                         builder: (context) => RegisterComplaint(
                                             number: widget.number,
                                             role: widget.role)))
+                              }
+                            else
+                              {
+                                print('hi'),
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ComplaintRecieved()))
                               }
                           }),
                 ],
