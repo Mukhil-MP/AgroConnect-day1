@@ -165,45 +165,58 @@ return res.status(StatusCodes.OK).json({
 });
 };
 
-module.exports.complaintNew = async (req, res) => {
+module.exports.complaintViewOfficer = async (req, res) => {
   const mobileNumber = req.body.mobileNumber
   const officer = await models.User.findOne({mobileNumber:mobileNumber})
-  const newComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notSeen"}) 
+  const complaints = await models.Complaint.find({officer:officer._id}) 
 
 
 return res.status(StatusCodes.OK).json({
   success: true,
-  msg: 'New Complaints',
-  complaints: newComplaints
+  msg: 'Complaints',
+  complaints:complaints
 });
 };
 
-
-module.exports.complaintNotRes = async (req, res) => {
-  const mobileNumber = req.body.mobileNumber
-  const officer = await models.User.findOne({mobileNumber:mobileNumber})
-  const notRepComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notReplyed"}) 
-
-
-return res.status(StatusCodes.OK).json({
-  success: true,
-  msg: 'Not Replyed Complaints',
-  complaints: notRepComplaints
-});
-};
-
-module.exports.complaintRes = async (req, res) => {
-  const mobileNumber = req.body.mobileNumber
-  const officer = await models.User.findOne({mobileNumber:mobileNumber})
-  const repComplaints = await models.Complaint.find({officer:officer._id,complaintType:"replyed"}) 
+// module.exports.complaintNew = async (req, res) => {
+//   const mobileNumber = req.body.mobileNumber
+//   const officer = await models.User.findOne({mobileNumber:mobileNumber})
+//   const newComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notSeen"}) 
 
 
-return res.status(StatusCodes.OK).json({
-  success: true,
-  msg: 'Not Replyed Complaints',
-  complaints: repComplaints
-});
-};
+// return res.status(StatusCodes.OK).json({
+//   success: true,
+//   msg: 'New Complaints',
+//   complaints: newComplaints
+// });
+// };
+
+
+// module.exports.complaintNotRes = async (req, res) => {
+//   const mobileNumber = req.body.mobileNumber
+//   const officer = await models.User.findOne({mobileNumber:mobileNumber})
+//   const notRepComplaints = await models.Complaint.find({officer:officer._id,complaintType:"notReplyed"}) 
+
+
+// return res.status(StatusCodes.OK).json({
+//   success: true,
+//   msg: 'Not Replyed Complaints',
+//   complaints: notRepComplaints
+// });
+// };
+
+// module.exports.complaintRes = async (req, res) => {
+//   const mobileNumber = req.body.mobileNumber
+//   const officer = await models.User.findOne({mobileNumber:mobileNumber})
+//   const repComplaints = await models.Complaint.find({officer:officer._id,complaintType:"replyed"}) 
+
+
+// return res.status(StatusCodes.OK).json({
+//   success: true,
+//   msg: 'Not Replyed Complaints',
+//   complaints: repComplaints
+// });
+// };
 
 
 
